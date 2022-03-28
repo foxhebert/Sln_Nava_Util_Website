@@ -1,0 +1,248 @@
+﻿@model IEnumerable<WebNavaUtil.wsNavautil.Pedido>
+@{
+    ViewBag.Title = "ConsultaPedido";
+}
+@{
+    int correlativo = 0;
+}
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <!-- <div class="card-header">
+              <h3 class="card-title">Consultas de Pedido</h3>
+            </div> -->
+            <div class="card-body">
+                <h3 class="card-title">Consulta de Pedidos</h3>
+                <div class="row" id="div-filtros-pedido" style="display:none">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Estado</label>
+                            <select name="" id="estado-pedido" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                                <option value="0">Evaluación</option>
+                                <option value="1">Aprobados</option>
+                                <option value="2">Desaprobados</option>
+                                <option value="3">Pend. Atención</option>
+                                <option value="4">Canc. forzada</option>
+                                <option value="5">Atendidos</option>
+                                <option value="6">Todos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Vendedor</label>
+                            @Html.DropDownList("cboVendedor", (SelectList)ViewBag.VENDEDOR, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">RUC/Razón Social</label>
+                            <input type="text" name="field-name" class="form-control" placeholder="RUC" id="txt-ruc-cli-ped" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+                        <div class="form-group">
+                            <br />
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="example-checkbox1" value="Anulados" id="chkAnnulled">
+                                <span class="custom-control-label">Anulados</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Desde</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="00/00/0000" id="date_1"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Hasta</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="DD/MM/YYYY" id="date_2"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Nº Pedido</label>
+                            <input type="text" name="field-name" class="form-control" placeholder="Nro Pedido" id="noOrder" onkeypress="return autoComplete(event)" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <br />
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros" data-active="mas">
+                                    <i class="fe fe-plus mr-2"></i>Más
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn-primary btn-danger" id="btn-filtrar-pedido" style="color:white">
+                                    <i class="fe fe-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">Listado de Pedidos</h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
+                    <a class="btn btn-icon btn-primary" id="btn-impresion-pedido" style="color:white"><i class="fe fe-printer"></i></a>
+                </div>
+
+            </div>
+            <div class="table-responsive" id="pedido-cabecera-table">
+
+                <table class="table card-table table-hover table-vcenter  datatable-pedido" width="100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>idOrder</th>
+                            <th>Nº Pedido</th>
+                            <th>F.Emisión</th>
+                            <!--<th style="width:7%">F.Entrega</th>-->
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>M</th>
+                            <!--<th style="width:5%">T/C</th>-->
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <!-- <th style="width:5%">ST</th>-->
+                            <th>Cotización</th>
+                            <th>Fac./Bol./Guía</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td >
+                                    @correlativo
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nroPedido)
+                                </td>
+                                <td>
+                                    @Html.ValueFor(modelItem => item.fechaEmicion, "{0:dd/MM/yyyy}")
+                                </td>
+                                @*<td>
+                                        @Html.ValueFor(modelItem => item.fechaEntrega, "{0:dd/MM/yyyy}")
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.vendedor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.moneda)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.tipoCambio)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.montoTotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.estado)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.situacion)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cotizacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.facBolGuia)
+                                </td>
+
+                            </tr>
+                            correlativo++;
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detalle del Pedido  <label id="lbl-det-nroPedido"></label></h3>
+            </div>
+            <div class="table-responsive" id="detalle-pedido-table">
+                <table class="table card-table table-vcenter text-nowrap datatable-detalle-pedido">
+                    <thead>
+                        <tr>
+                            <th>Cod.Producto</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>U.M.</th>
+                            <th>Solicitado</th>
+                            <th>Aprobado</th>
+                            <th>Entregado</th>
+                            <th>Pendiente</th>
+                            <!-- <th>Porcent.</th>-->
+                            <th>P.Unit.</th>
+                            <th>Total</th>
+                            <th>Dscto</th>
+                            <!-- <th>Alm.</th>-->
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-pedido-print" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Comentario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="div-print-cantidad">
+                    <div class="form-group">
+                        <label class="form-label">Ingrese Comentario para la Impresión</label>
+                        <input type="text" class="form-control" name="" id="txt-comentario-print" placeholder="Ingrese Comentario">
+                    </div>
+                </div>
+
+                <input type="hidden" id="nroPedido-print" class="form-control" />
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-gray" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-red" id="btn-print-pedido">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

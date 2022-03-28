@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:10772/wsNavautil.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+  <xs:element name="ListarPedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaIni" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="nroPedido" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="vendedor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ruc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="anulados" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarPedidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarPedidoResult" nillable="true" type="q1:ArrayOfPedido" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarDetallePedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cdocu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ndocu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listarDetallePedidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listarDetallePedidoResult" nillable="true" type="q2:ArrayOfDetallePedido" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarVendedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarVendedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarVendedorResult" nillable="true" type="q3:ArrayOfVendedor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarUsuarioNavaUtil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strNomAcceso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strClave" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jellyBean" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarUsuarioNavaUtilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ValidarUsuarioNavaUtilResult" nillable="true" type="q4:Usuario" />
+        <xs:element minOccurs="0" name="jellyBean" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGuia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaIni" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="nroGuia" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="vendedor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="anulados" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGuiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarGuiaResult" nillable="true" type="q5:ArrayOfGuía" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDetalleGuia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cdocu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ndocu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarDetalleGuiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarDetalleGuiaResult" nillable="true" type="q6:ArrayOfDetalleGuia" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAlmacen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarAlmacenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarAlmacenResult" nillable="true" type="q7:ArrayOfAlmacen" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFamilia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarFamiliaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarFamiliaResult" nillable="true" type="q8:ArrayOfFamilia" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSubFamilia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codFam" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarSubFamiliaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarSubFamiliaResult" nillable="true" type="q9:ArrayOfSubFamilia" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGrupo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codSub" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarGrupoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarGrupoResult" nillable="true" type="q10:ArrayOfGrupo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdStockCAB">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codSubFam" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codFam" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="desGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codAlmac" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codProdu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descProdu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdStockCABResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarProdStockCABResult" nillable="true" type="q11:ArrayOfProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMovProdu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codProdu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="chk" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMovProduResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarMovProduResult" nillable="true" type="q12:ArrayOfMovimiento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatosProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codProdu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatosProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="DatosProductoResult" nillable="true" type="q13:Producto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatosProductoCotiz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codProdu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="precioPro" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="costPro" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mstoPro" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moneitemPro" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="aigvPro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatosProductoCotizResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="DatosProductoCotizResult" nillable="true" type="q14:Producto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codprodu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="uca" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarProductoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImpresionTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ndocu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="comentario" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoDoc" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImpresionTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ImpresionTicketResult" nillable="true" type="q15:Respuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImprimirEtiqueta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="datosPrint" nillable="true" type="q16:Guía" />
+        <xs:element minOccurs="0" name="cantBultos" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImprimirEtiquetaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ImprimirEtiquetaResult" nillable="true" type="q17:Respuesta" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultarCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaIni" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ruc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codVend" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="anulado" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultarClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="consultarClienteResult" nillable="true" type="q18:ArrayOfCliente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarComprobante">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaIni" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="FechaFin" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultarComprobanteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ConsultarComprobanteResult" nillable="true" type="q19:ArrayOfComprobante" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrabarCotizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="objCabeCotizacion" nillable="true" type="q20:CabeceraCotizacion" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="listDetaCotizacion" nillable="true" type="q21:ArrayOfDetalleCotizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GrabarCotizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GrabarCotizacionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultarClienteCotizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ruc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codVend" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultarClienteCotizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="consultarClienteCotizacionResult" nillable="true" type="q22:ArrayOfClienteCotizacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneral">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strFiltroCombo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="strSegundoFiltro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarComboGeneralResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarComboGeneralResult" nillable="true" type="q23:ArrayOfComboGeneral" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdStockCotiz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codSubFam" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codFam" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="desGrupo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codAlmac" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codProdu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descProdu" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tcam" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mone" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdStockCotizResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarProdStockCotizResult" nillable="true" type="q24:ArrayOfProducto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCorrelativoCotizacion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cNroDocu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getCorrelativoCotizacionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="getCorrelativoCotizacionResult" nillable="true" type="q25:ArrayOfCorrelativo" />
+        <xs:element minOccurs="0" name="cNroDocu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEmisor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="empresa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEmisorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Dominio.Entidades" minOccurs="0" name="ListarEmisorResult" nillable="true" type="q26:ArrayOfEmisor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

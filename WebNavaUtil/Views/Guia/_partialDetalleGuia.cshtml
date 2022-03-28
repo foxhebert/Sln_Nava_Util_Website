@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebNavaUtil.wsNavautil.DetalleGuia>
+
+<table class="table card-table table-hover table-vcenter datatable-detalle-Guia">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Marca</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>UM</th>
+            <th>Precio</th>
+            <th>Total</th>
+            <th>Dscto</th>
+            <!--  <th>Almacén</th>-->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codProd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.marcaProd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descProd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantProd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.preUni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.montoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dscto)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.codAlmac)
+                </td>*@               
+            </tr>
+        }
+
+    </tbody>
+</table>

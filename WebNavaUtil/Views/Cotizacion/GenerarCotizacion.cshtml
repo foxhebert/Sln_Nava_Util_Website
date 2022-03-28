@@ -1,0 +1,707 @@
+﻿@using WebNavaUtil.wsNavautil
+@*@model IEnumerable<WebNavaUtil.wsNavautil.Cliente>*@
+@model object[]
+
+<script src="~/Content/assets/plugins/SweetAlert/sweetalert2@11.js"></script>
+
+@{
+    List<Producto> Producto = new List<Producto>();
+    List<Cliente> Cliente = new List<Cliente>();
+}
+
+
+
+@{
+    ViewBag.Title = "GenerarCotizacion";
+}
+
+@{
+    Usuario objUsuario = (Usuario)Session["NavaUsert"];
+    int correlativo = 0;
+
+    //Usuario objUsuario = (Usuario)Session["NavaUsert"];
+    int i = 1;
+    //String TC = ViewBag.VENDEDOR[0].cboDes; //revisa con consola que llegue el da ok
+
+}
+
+
+<!-- 1.- "CONSULTA DE CLIENTES"-->
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <div class="card-body">
+                <h3 class="card-title">Consulta de Clientes</h3>
+                <div class="row" id="div-filtros-pedido" style="display:none">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <br />
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="example-checkbox1" value="Anulados" id="chkAnnulled">
+                                <span class="custom-control-label">Anulados</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Desde</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="00/00/0000" id="date_1"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Hasta</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="DD/MM/YYYY" id="date_2"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+
+                    <!-- COMBO VENDEDOR 01 -->
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Vendedor</label>
+                            @Html.DropDownList("cboVendedor", (SelectList)ViewBag.VENDEDOR, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- RAZON SOCIAL -->
+                    <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">RUC/Razón Social</label>
+                            <input type="text" name="field-name" class="form-control" placeholder="RUC" id="txt-ruc-cli" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <br />
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros" data-active="mas" hidden>
+                                    <i class="fa fa-plus mr-2"></i>Más @*class="fe fe-plus mr-2" HGM*@
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn -primary btn-danger" id="btn-filtrar-cliente-cotiz" style="color:white;  height:40px;">
+                                    <i class="fa fa-search"></i> @*class="fe fe-search"*@
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 2.- LISTADO DE CLIENTES -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">1. Seleccionar Cliente a Cotizar</h3>
+                </div>
+            </div>
+            <div class="table-responsive" id="contend-table-cliente">
+                <table class="table card-table table-hover table-vcenter datatable-cliente-cotiz" width="100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>idOrder</th>
+                            <th>RAZON SOCIAL</th>
+                            <th>RUC</th>
+                            <th>VENDEDOR</th>
+                            <th>ESCONDIDO Codigo Cliente</th>
+                            <th>ESCONDIDO dircli</th>
+                            <th>ESCONDIDO dirent</th>
+                            <th>ESCONDIDO telcli</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*Model*@
+                        @foreach (var item in Cliente)
+                        {
+
+                            <tr>
+                                <td>
+                                    @correlativo
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nroComprobante)
+                                </td>
+                                <td>
+                                    @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.condVenta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.moneda)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.vendedor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total)
+                                </td>
+                            </tr>
+                            correlativo++;
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <div class="card-body">
+                <div class="row">
+                    <h3 class="card-title">2. Datos de la Cotización</h3>
+                    <!-- BOTONES GUARDAR CANCELAR -->
+                    <div class="col-lg-3 col-sm-3" hidden>
+                        <label class="form-label">&nbsp;</label>
+                        <div class="form-group" style=" display:flex; justify-content: space-between;">
+                            <label class="form-label">&nbsp;</label>
+                            <button type="button" class="btn btn-primary full-width" id="btn-cotizacion-grabar-GUARDAR"> GUARDAR</button>
+                            <button type="button" class="btn btn-danger full-width" id="btn-productos-cotizacion-CANCELAR"> CANCELAR</button>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- COMBO VENDEDOR 02 -->
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Vendedor</label>
+                            @Html.DropDownList("cboVendedorCod", (SelectList)ViewBag.VENDEDOR, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- COMBO CONDICION DE VENTA -->
+                    <div class="col-lg-3 col-sm-3 col-xs-12">
+                        <div class="form-group" style="width:250px;">
+                            <label class="form-label">Condición</label>
+                            @Html.DropDownList("cboCondicionVenta", (SelectList)ViewBag.CONDICION, "Seleccione....", new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                    <!-- COMBO MONEDA-->
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Moneda</label>
+                            <select class="form-control" id="cboModeda">
+                                <option value="D">Dólares</option>
+                                <option value="S">Soles</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- COMBO VALIDEZ -->
+                    <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Validez</label>
+                            <input type="number" class="form-control" name="" id="txt-dura-validez" @*pattern="[0-9]"*@ onkeypress="validarEntero(event)"
+                                   @*onkeydown="if(event.key==='.'){event.preventDefault();}"*@
+                                   value="10" min="0" max="99" placeholder="Cantidad">
+
+
+                        </div>
+                    </div>
+
+                    <!-- INPUT TIPO DE CAMBIO-->
+                    <div class="col-lg-1 col-sm-3 col-xs-12">
+                        <div class="form-group" style="width:100px;">
+                            <label class="form-label">Tipo de Cambio</label>
+                            <input type="text" class="form-control" maxlength="5" name="" id="txt-tipo-cambio"
+                                   @*pattern="^[0-9]+([.][0-9]+)?$"*@ value="@(@ViewBag.TIPOCAMBIO ?? String.Empty)" onkeypress="validarTC(event)">
+
+                        </div>
+                    </div>
+                    <!-- BOTONES GUARDAR CANCELAR -->
+                    @*<div class="col-lg-3 col-sm-3 ">
+                <label class="form-label">&nbsp;</label>
+                <div class="form-group" style=" display:flex; justify-content: space-between;">
+                    <label class="form-label">&nbsp;</label>
+                    <button type="button" class="btn btn-primary full-width" id="btn-cotizacion-grabar-GUARDAR"> GUARDAR</button>
+                    <button type="button" class="btn btn-danger full-width" id="btn-productos-cotizacion-CANCELAR"> CANCELAR</button>
+                    &nbsp;
+                </div>
+            </div>*@
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Atte del Cliente</label>
+                            <input type="text" id="txt-atencion-ver" class="form-control" placeholder="" maxlength="40" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Dirección de Entrega del Cliente</label>
+                            <input type="text" id="txt-dirent-ver" class="form-control" placeholder="" maxlength="40" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Observación</label>
+                            <input type="text" id="txt-obser-ver" class="form-control" placeholder="" maxlength="40" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- 3.- CONSULTAS DE STOCK (Productos) -->
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <div class="card-body">
+                <h3 class="card-title">Consultas de Stock</h3>
+                <div class="row" id="div-filtros-pedido-cotiz" @*style="display:none"*@>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Código del Producto</label>
+                            <input type="text" name="" class="form-control" placeholder="código" id="cod-produ" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" name="" class="form-control" placeholder="Descripción" id="desc-produ" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Estado</label>
+                            <select name="" id="estado-produ" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                                <option value="3">Todos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" style="text-align:right">
+                            <br />
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros-cotiz" data-active="mas-cotiz" hidden>
+                                    <i class="fa fa-plus mr-2"></i>Más
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn-primary btn-danger" id="btn-search-produ-stock-cotiz" style="color:white">
+                                    <i class="fa fa-search"></i> @*fa fa-search*@
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" style="display:none">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Almacén</label>
+                            @Html.DropDownList("cboAlmacen", (SelectList)ViewBag.ALMACEN, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Línea</label>
+                            @Html.DropDownList("cboFamilia", (SelectList)ViewBag.FAMILIA, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Sub Línea</label>
+                            <select name="" id="cboSubLinea" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" hidden>
+                        <div class="form-group">
+                            <label class="form-label">Grupo/Tipo</label>
+                            <select name="" id="cboGrupo" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" style="text-align:right">
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros-cotiz" data-active="mas-cotiz" hidden>
+                                    <i class="fa fa-plus mr-2"></i>Más
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn-primary btn-danger" id="btn-search-produ-stock-cotiz" style="color:white">
+                                    <i class="fa fa-search"></i> 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>*@
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 4.- Listados de Stock Filtrados -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">3. Seleccionar Productos del Listado de Stock</h3>
+                </div>
+                @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
+                    <label class="btn btn-primary" style="margin-top:8px;" id="btn-MAS-display-modal-producto-aniadir" title="Agregar a la Cotización"><i class="fa fa-plus fa-2x"> </i></label>
+                    &nbsp;
+                </div>*@
+            </div>
+            <div class="table-responsive" id="producto-cabecera-table">
+                <table class="table  card-table datatable-producto-cotizacion" width="100%">
+                    <!--HGM 15.10.2021 -cotizacion-->
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>U.M.</th>
+                            <th>Stock Físico</th>
+                            <th>Stock Dispon.</th>
+                            <th>Pedido</th>
+                            @*@if (objUsuario.empresa.Equals("tecflex"))
+                            {
+                                <th>Stock Codbar</th>
+                            }
+                            else
+                            {
+                                <th>Stock Tecflex</th>
+                            }*@
+                            <th>Código Produ</th>
+                            <th>Precio</th>
+                            <th style="display:none">'cost'    HIDDEN</th>
+                            <th style="display:none">'msto'    HIDDEN</th>
+                            <th style="display:none">'moneitem'HIDDEN</th>
+                            <th style="display:none">'aigv'    HIDDEN</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Producto)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.codProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.marcaProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.descProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UM)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockFisico)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockDispon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pedido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockOtr)
+                                </td>
+                                <td hidden>
+                                    @Html.DisplayFor(modelItem => item.idProdu)
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 4.2- AÑADIR PRODUCTO - MODAL DOS -->
+<div class="modal fade" id="modal-aniadir-producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Añadir Producto a Cotizar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-content-aniadir-producto">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btn-aniadir-produ-cotizar">Añadir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4.3- MODAL PRE-GUARDADO-->
+<div class="modal fade" id="modal-pre-cuardado" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width:60%;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Datos a Mostrar en la Cotización</h5>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>*@
+            </div>
+            <div class="modal-body modal-content-cotizacion-pre-guardado">
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar-guardado-cotizacion">Guardar</button>*@
+                <button type="button" class="btn btn-primary" id="confirmar-adicionales-cotizacion">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Listados de Productos a Cotizar -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">Listado de Productos a Cotizar</h3>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right" hidden>
+                    <button type="button" class="btn btn-icon btn-success" id="" style="color:white">
+                        <!--data-toggle="modal" data-target="#modal-editar-producto"-->
+                        <i class="fa fa-edit">ICONO NO VISIBLE</i>
+                    </button>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-4 float-md-right" style="left:120px;">
+                    <center>  </center>
+                    <button type="button" class="btn btn-primary full-width" id="btn-reporte-cotizacion-CRYSTAL"><i class="fa fa-list-alt"></i> GENERAR</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-danger full-width" id="btn-reporte-cotizacion-PDF"><i class="fa fa-file-pdf-o"></i>  PDF</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-success full-width" id="btn-reporte-cotizacion-EXCEL"><i class="fa fa-file-excel-o"></i>  EXCEL</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-4 float-md-right" style="left:120px;">
+                    <label class="btn btn-primary" id="btn-MAS-display-modal-producto-aniadir" title="Agregar a la Cotización" style="margin-top:8px;"><i class="fa fa-plus fa-2x"> </i></label>
+                    &nbsp;
+                    <label class="btn btn-danger" id="btn-remover-producto-cotiz" title="Quitar de la Cotización" style="margin-top:8px;"><i class="fa fa-trash-o fa-2x"> </i></label>
+                </div>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table  card-table datatable-producto-cotiz" width="100%">
+                    @*datatable-producto-cotiz*@
+                    <thead class="thead-light">
+                        <tr>
+                            <th>N°</th>
+                            <th>'idProdu' HIDDEN</th>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>U.M.</th>
+                            <th>Pedido</th>
+                            <th>Precio</th>
+                            <th>Descuento</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 4.1- Detalle de Movimientos - NO SE USA -->
+<div class="row" hidden>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detalle de Movimientos <label id="lbl-detMovi-produ"></label></h3>
+
+            </div>
+            <div class="table-responsive" id="movimiento-produ-table">
+                <table class="table card-table table-vcenter text-nowrap datatable-movi-produ" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Fecha</th>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Salida</th>
+                            <th>Precio Und</th>
+                            <th>Referencia</th>
+                            <th>Tipo Mov</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 4.2- Editar Nro. de Etiquetas por Rollo MODAL UNO  - NO SE USA-->
+<div class="modal fade" id="modal-editar-producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar Nro. de Etiquetas por Rollo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-content-edit-produ">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Código</label>
+                            <input type="text" class="form-control" name="" id="txt-codProdu" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Nro. de Etiquetas por Rollo</label>
+                            <input type="number" class="form-control" name="" id="txt-nroEtiquetas" placeholder="Cantidad">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h6>Descripción: </h6>
+                        <h6>Unid. Medida: </h6>
+                        <h6>Marca: </h6>
+                        <h6>Linea: </h6>
+                        <h6>Sub Linea: </h6>
+                        <h6>Grupo/Tipo: </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btn-registrar-produ-edit">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<input type="button" value="MODAL" id="modal-pre-cuardado-click" />*@
+<div class="border-section" hidden>
+    <form id="myForm">
+        <input type="text" id="myPercent" name="myPercent" />%
+        <input type="hidden" id="myFraction" name="myFraction" />
+    </form>
+    <script type="text/javascript">
+        document.getElementById('myForm').onsubmit = function () {
+            document.getElementById('myFraction').value =
+                document.getElementById('myPercent').value / 100;
+        }
+    </script>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group" id="porcentaje_general">
+            <label>Porcentaje General (%)</label>
+            <input type="number" class="form-control" id="pocent_general" onkeypress="CampoPorcentajeSinNegativos(event)"
+                   placeholder="Porcentaje %" oninput="javascript: if (this.value.length >  this.maxLength) this.value = this.value.slice(0, this.maxLength);if (this.value > 100) this.value = 100;if (this.value == 0) this.value = 1;  " maxlength="3" max="100">
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 2.1.- HIDDEN -- DETALLE DE COMPROBANTE (de listado de clientes)  Se escondera -->
+<div class="row" hidden>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detalle del Comprobante <label id="lbl-detComp-cliente"></label></h3>
+            </div>
+            <div class="table-responsive" id="contend-comprobante">
+                <table class="table card-table table-vcenter text-nowrap datatable-comprob-cliente-cotiz">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>UM</th>
+                            <th>Precio</th>
+                            <th>Total (SIN IGV)</th>
+                            <th>Stock Físico</th>
+                            @if (objUsuario.empresa.Equals("tecflex"))
+                            {
+                                <th>Stock Codbar</th>
+                            }
+                            else
+                            {
+                                <th>Stock Tecflex</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

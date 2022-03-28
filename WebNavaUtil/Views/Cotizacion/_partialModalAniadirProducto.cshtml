@@ -1,0 +1,139 @@
+﻿@model WebNavaUtil.wsNavautil.Producto
+@{ int uniCant = Convert.ToInt32(Model.stockDispon);} @*Model.uca1*@
+<div class="row">
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label class="form-label">Código</label>
+            <input type="text" class="form-control" name="" id="txt-codProduct" value="@Model.codProdu" readonly>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label class="form-label">Cantidad</label>
+            <input type="number" class="form-control" name="" id="txt-cantProdu" @*pattern="[0-9]"*@ onkeypress="validarEntero(event)"
+                   @*onkeydown="if(event.key==='-'){event.preventDefault();}"*@ value="0" min="0" max="@uniCant" placeholder="Cantidad" autofocus>
+       
+            <input type="text" class="form-control" value="@Model.idProdu " name="" id="txt-idProdu"  hidden/>
+            <input type="text" class="form-control" value="@Model.stockFisico" name="" id="txt-stkFisico" hidden/>
+            <input type="text" class="form-control" value="@Model.stockDispon" name="" id="txt-stkDispon" hidden/>
+            @*<input type="text" class="form-control" value="@Model.stockDispon" name="" id="txt-stkTopeMaximo" />*@
+
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label class="form-label">Descuento (%)</label>
+            <input class="form-control" type="number" min="0" max="100" value="0.00" step="0.01" id="txt-porcentaje-descuento">
+        </div>
+    </div>
+    <script>
+        //https://jsfiddle.net/o2gxgz9r/16845/
+    </script>
+
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Descripción:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-descProdu">@Model.descProdu</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Unid. Medida:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-unidMedida">@Model.UM</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Marca:</h6>
+            </div>
+            <div class="col-md-9">
+                <small  id="txt-marcaProdu">@Model.marcaProdu</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Linea:</h6>
+            </div>
+            <div class="col-md-9">
+                <small  id="txt-nomfam">@Model.nomfam</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Sub Linea:</h6>
+            </div>
+            <div class="col-md-9">
+                <small  id="txt-nomsub">@Model.nomsub</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Grupo/Tipo:</h6>
+            </div>
+            <div class="col-md-9">
+                <small  id="txt-nomgrup">@Model.nomgrup</small>
+            </div>
+        </div>
+        <!--PRECION NO EDITABLE-->
+        <div class="row">
+            <div class="col-md-3">
+                <h6>Precio:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-precio">@Model.precio</small>
+            </div>
+        </div>
+        @*precio
+        cost
+        msto
+        moneitem
+        aigv*@    
+
+        <div class="row" hidden>
+            <div class="col-md-3">
+                <h6>Precio:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-cost">@Model.cost</small>
+            </div>
+        </div>
+
+        <div class="row" hidden>
+            <div class="col-md-3">
+                <h6>Precio:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-msto">@Model.msto</small>
+            </div>
+        </div>
+
+        <div class="row" hidden>
+            <div class="col-md-3">
+                <h6>Precio:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-moneitem">@Model.moneitem</small>
+            </div>
+        </div>
+
+        <div class="row" hidden>
+            <div class="col-md-3">
+                <h6>Precio:</h6>
+            </div>
+            <div class="col-md-9">
+                <small id="txt-aigv">@Model.aigv</small>
+            </div>
+        </div>
+
+    </div>
+</div>

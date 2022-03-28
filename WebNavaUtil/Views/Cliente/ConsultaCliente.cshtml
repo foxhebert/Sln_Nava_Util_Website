@@ -1,0 +1,185 @@
+﻿@using WebNavaUtil.wsNavautil
+@model IEnumerable<WebNavaUtil.wsNavautil.Cliente>
+
+@{
+    ViewBag.Title = "ConsultarCliente";
+}
+
+@{
+    Usuario objUsuario = (Usuario)Session["NavaUsert"];
+    int correlativo = 0;
+}
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <div class="card-body">
+                <h3 class="card-title">Consulta de Clientes</h3>
+                <div class="row" id="div-filtros-pedido" style="display:none">
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Vendedor</label>
+                            @Html.DropDownList("cboVendedor", (SelectList)ViewBag.VENDEDOR, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+                        <div class="form-group">
+                            <br />
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="example-checkbox1" value="Anulados" id="chkAnnulled">
+                                <span class="custom-control-label">Anulados</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Desde</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="00/00/0000" id="date_1"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Hasta</label>
+                            <input type="text" name="field-name" class="form-control" data-mask="DD/MM/YYYY" id="date_2"
+                                   data-mask-clearifnotmatch="true" placeholder="DD/MM/YYYY" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">RUC/Razón Social</label>
+                            <input type="text" name="field-name" class="form-control" placeholder="RUC" id="txt-ruc-cli" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <br />
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros" data-active="mas">
+                                    <i ></i>Más @*class="fe fe-plus mr-2" HGM*@
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn -primary btn-danger" id="btn-filtrar-cliente" style="color:white;  height:40px;">
+                                    <i class="" ></i> @*class="fe fe-search"*@
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">Listado de Clientes</h3>
+                </div>
+
+            </div>
+            <div class="table-responsive" id="contend-table-cliente">
+
+                <table class="table card-table table-hover table-vcenter  datatable-cliente" width="100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>idOrder</th>
+                            <th>id</th>
+                            <th>Nº Comprobante</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Condicion de venta</th>
+                            <th>M</th>
+                            <th>Vendedor</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    @correlativo
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nroComprobante)
+                                </td>
+                                <td>
+                                    @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.cliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.condVenta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.moneda)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.vendedor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total)
+                                </td>
+                            </tr>
+                            correlativo++;
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detalle del Comprobante <label id="lbl-detComp-cliente"></label></h3>
+            </div>
+            <div class="table-responsive" id="contend-comprobante">
+                <table class="table card-table table-vcenter text-nowrap datatable-comprob-cliente">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>Cantidad</th>
+                            <th>UM</th>
+                            <th>Precio</th>
+                            <th>Total (SIN IGV)</th>
+                            <th>Stock Físico</th>
+                            @if (objUsuario.empresa.Equals("tecflex"))
+                            {
+                                <th>Stock Codbar</th>
+                            }
+                            else
+                            {
+                                <th>Stock Tecflex</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+

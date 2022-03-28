@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebNavaUtil.wsNavautil.Movimiento>
+
+@{ int nro = 0;}
+<table class="table card-table table-vcenter text-nowrap datatable-movi-produ" width="100%">
+    <thead>
+        <tr>
+            <th>Nro</th>
+            <th>Fecha</th>
+            <th>Documento</th>
+            <th>Nombre</th>
+            <th>Salida</th>
+            <th>Precio Und</th>
+            <th>Referencia</th>
+            <th>Tipo Mov</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @nro
+                </td>
+                <td>
+                    @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.doc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.salida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.preUnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.referencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoMov)
+                </td>
+            </tr>
+            nro++;
+        }
+    </tbody>
+</table>

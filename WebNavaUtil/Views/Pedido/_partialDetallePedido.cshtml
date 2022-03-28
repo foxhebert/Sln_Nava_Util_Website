@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebNavaUtil.wsNavautil.DetallePedido>
+
+<table class="table card-table table-hover table-vcenter datatable-detalle-pedido">
+    <thead>
+        <tr>
+            <th>Cod.Producto</th>
+            <th>Marca</th>
+            <th>Descripción</th>
+            <th>U.M.</th>
+            <th>Solicitado</th>
+            <th>Aprobado</th>
+            <th>Entregado</th>
+            <th>Pendiente</th>
+            <!-- <th>Porcent.</th>-->
+            <th>P.Unit.</th>
+            <th>Total</th>
+            <th>Dscto</th>
+            <!-- <th>Alm.</th>-->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codProdu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricpcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.undMedida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.solicitado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aprobado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.entregado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pendiente)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.porcentaje)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.preUni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dscto)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.almacen)
+            </td>*@
+        </tr>
+        }
+    </tbody>
+</table>
+

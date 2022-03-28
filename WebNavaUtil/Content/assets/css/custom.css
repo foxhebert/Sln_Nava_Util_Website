@@ -1,0 +1,393 @@
+.datepicker {
+    padding: 0px;
+    border-radius: 0px;
+}
+
+.datepicker.dropdown-menu {
+    border: 0px solid #ccc;
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    width: 300px;
+}
+
+.datepicker-days .table-condensed thead tr {
+    background: #c53c3c;
+    /*elementary*/
+    color: #fff;
+}
+
+.datepicker-days .table-condensed thead tr:first-child {
+    height: 70px;
+}
+
+.datepicker-days .table-condensed thead tr:last-child {
+    background: #c53c3c;
+    /*elementary*/
+    height: 40px;
+}
+
+.datepicker-days .table-condensed thead tr th:first-child {
+    display: none;
+}
+
+.datepicker-days .table-condensed tbody tr td:first-child {
+    display: none;
+}
+
+.datepicker thead tr:first-child th:hover,
+.datepicker tfoot tr th:hover {
+    background: #c53c3c;
+    /*elementary*/
+    color: #fff;
+}
+
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active:focus,
+.datepicker table tr td.active:hover:focus,
+.datepicker table tr td.active.disabled:focus,
+.datepicker table tr td.active.disabled:hover:focus,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td.active,
+.open .dropdown-toggle.datepicker table tr td.active:hover,
+.open .dropdown-toggle.datepicker table tr td.active.disabled,
+.open .dropdown-toggle.datepicker table tr td.active.disabled:hover {
+    background: #c53c3c;
+    /*elementary*/
+    color: #fff;
+}
+
+.datepicker-dropdown:after,
+.datepicker-dropdown:before {
+    position: unset;
+    display: none;
+}
+
+.datepicker table tr td,
+.datepicker table tr th {
+    border-radius: 0px;
+}
+
+.datepicker table {
+    width: 300px;
+    height: 380px;
+}
+
+.datepicker.dropdown-menu th,
+.datepicker.dropdown-menu td {
+    padding: 10px 5px;
+}
+
+.datepicker th.datepicker-switch {
+    font-size: 16px;
+}
+
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active:focus,
+.datepicker table tr td span.active:hover:focus,
+.datepicker table tr td span.active.disabled:focus,
+.datepicker table tr td span.active.disabled:hover:focus,
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:hover.active,
+.open .dropdown-toggle.datepicker table tr td span.active,
+.open .dropdown-toggle.datepicker table tr td span.active:hover,
+.open .dropdown-toggle.datepicker table tr td span.active.disabled,
+.open .dropdown-toggle.datepicker table tr td span.active.disabled:hover {
+    background: #c53c3c;
+    /*elementary*/
+    color: #fff;
+}
+
+.datepicker-months .table-condensed thead tr,
+.datepicker-years .table-condensed thead tr {
+    height: 70px;
+    background: #c53c3c;
+    /*elementary*/
+    color: #fff;
+}
+
+.datepicker.dropdown-menu .datepicker-months th,
+.datepicker.dropdown-menu .datepicker-months td {
+    padding: 20px 22px;
+}
+
+.datatable-pedido tbody tr td,
+.datatable-detalle-pedido tbody tr td,
+.datatable-detalle-Guia tbody tr td,
+.datatable-Guia tbody tr td,
+.datatable-producto tbody tr td,
+.datatable-producto-cotiz tbody tr td,
+.datatable-producto-cotizacion tbody tr td,
+.datatable-movi-produ tbody tr td,
+.datatable-cliente tbody tr td,
+.datatable-cliente-cotiz tbody tr td,
+.datatable-comprob-cliente tbody tr td {
+    font-size: 12px;
+}
+
+.datatable-pedido thead tr th,
+.datatable-detalle-pedido thead tr th,
+.datatable-detalle-Guia thead tr th,
+.datatable-Guia thead tr th,
+.datatable-producto thead tr th,
+.datatable-producto-cotiz thead tr th,
+.datatable-producto-cotizacion thead tr th,
+.datatable-movi-produ thead tr th,
+.datatable-cliente thead tr th,
+.datatable-cliente-cotiz thead tr th,
+.datatable-comprob-cliente thead tr th {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+/*dialog css*/
+/*----------------------------------------------*/
+.dialog-inner {
+    padding: 20px;
+    background: #fff;
+}
+
+.swal2-modal h2 {
+    font-size: 16px;
+    color: #fff;
+    line-height: 0px;
+    margin-top: 20px;
+}
+
+.swal2-modal .swal2-spacer {
+    height: 0px;
+}
+
+.swal2-modal .styled {
+    border: none !important;
+    background: #00c292 !important;
+    padding: 5px 30px;
+    font-size: 14px;
+    border-radius: 2px;
+    outline: none;
+}
+
+.swal2-modal {
+    border-radius: 2px;
+    background: #444 !important;
+}
+
+.dialog-pro .btn-info {
+    box-shadow: 0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12);
+    border: none;
+    outline: none !important;
+    border-radius: 2px;
+    font-size: 14px;
+    margin-right: 20px;
+    color: #fff;
+    background: #00c292;
+}
+
+    .dialog-pro .btn-info:hover {
+        border: none;
+        outline: none !important;
+        background: #00c292;
+    }
+
+.swal2-modal .swal2-content {
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 20px;
+}
+
+.swal2-icon.swal2-success::after, .swal2-icon.swal2-success::before {
+    background: #444;
+}
+
+.swal2-icon.swal2-success .fix {
+    background: #444;
+}
+
+.swal2-icon.swal2-success .line {
+    background-color: #00c292;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #00c292;
+}
+/*----------------------------------------*/
+
+
+/*  Modals CSS
+/*----------------------------------------*/
+.modals-single p{
+	font-size:14px;
+	color:#222;
+	line-height:24px;
+}
+.modals-default-notika{
+	background:#ccc;
+	padding: 40px 190px;
+}
+.modal-inner-pro{
+	background:#fff;
+	padding:40px 100px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+.modal-inner-pro h2, .modals-default .modal-body h2, .modal-sm .modal-body h2, .modal-large .modal-body h2{
+	font-size:16px;
+	color:#333;
+}
+.modal-inner-pro p, .modals-default .modal-body p, .modal-sm .modal-body p, .modal-large .modal-body p, .accordion-hd p, .tooltips-hd p, .tooltips-ctn p, .tooltips-static p, .popovers-hd p, .typography-list p, .tpgp-ele-tx p, .view-mail-atn p, .basic-tb-hd p{
+	font-size:14px;
+	color:#333;
+	line-height:24px;
+}
+.modal-ft{
+	text-align:right;
+}
+.modal-ft .btn-modal, .modals-default-cl .btn-info, .modal-sm .modal-footer .btn-default, .modal-large .modal-footer .btn-default, .modals-default .modal-footer .btn-default{
+	background:#00c292;
+	outline:none;
+	color:#fff;
+	border-radius:3px;
+	border:none;
+}
+.modals-default-cl .btn-info{
+	margin-right:10px;
+}
+.modal-ft .btn-modal{
+	margin-left:10px;
+}
+.modal-footer .btn+.btn{
+	margin-left:10px;
+}
+.modal-ft .btn-modal:focus, .modal-ft .btn-modal:active, .modal-ft .btn-modal:hover, .modals-default-cl .btn-info:focus, .modals-default-cl .btn-info:active, .modals-default-cl .btn-info:hover, .modals-default .modal-footer .btn-default:focus, .modals-default .modal-footer .btn-default:active, .modals-default .modal-footer .btn-default:hover, .modal-sm .modal-footer .btn-default:focus, .modal-sm .modal-footer .btn-default:active, .modal-sm .modal-footer .btn-default:hover, .modal-large .modal-footer .btn-default:focus, .modal-large .modal-footer .btn-default:active, .modal-large .modal-footer .btn-default:hover{
+	background:#00c292;
+	outline:none;
+	color:#fff;
+	box-shadow:none;
+}
+.modals-default .close, .modal-sm .close, .modal-large .close{
+	position: absolute;
+    right: -15px;
+    top: -15px;
+    background: #00c292;
+    opacity: 1;
+    color: #fff;
+    height: 26px;
+    width: 25px;
+    border-radius: 50%;
+    font-size: 18px;
+	outline:none;
+}
+.modal-dialog.modals-default {
+    width: 720px;
+	margin-top: 110px;
+}
+.modal-dialog.modal-sm {
+    width: 510px;
+	margin-top: 110px;
+}
+.modal-dialog.modal-large {
+    width: 910px;
+	margin-top: 110px;
+}
+.modal-dialog.modals-default .modal-content, .modal-dialog.modal-sm .modal-content, .modal-dialog.modal-large .modal-content{
+    border-radius: 0px;
+    padding: 40px 100px;
+}
+.modals-default .modal-header, .modals-default .modal-footer, .modals-default .modal-body, .modal-sm .modal-body, .modal-sm .modal-header, .modal-sm .modal-footer, .modal-large .modal-body, .modal-large .modal-header, .modal-large .modal-footer {
+    padding: 0px;
+    border-bottom: 0px solid #e5e5e5;
+	border-top: 0px solid #e5e5e5;
+}
+.modals-hd a, .accordion-hd a, .tab-hd a{
+	color:#333;
+}
+.modals-hd a:hover, .accordion-hd a:hover, .tab-hd a:hover{
+	color:#00c292;
+}
+.modals-default-cl .nk-red.btn-info{
+	background:#F44336;
+}
+.modals-default-cl .nk-light-blue.btn-info{
+	background:#03A9F4;
+}
+.modals-default-cl .nk-cyan.btn-info{
+	background:#00BCD4;
+}
+.modals-default-cl .nk-deep-purple.btn-info{
+	background:#673AB7;
+}
+.modals-default-cl .nk-indigo.btn-info{
+	background:#3F51B5;
+}
+.modals-default-cl .nk-blue.btn-info{
+	background:#2196F3;
+}
+.modals-default.nk-red .modal-content, .modals-default.nk-red .close, .modals-default.nk-red .modal-footer .btn-default{
+	background:#F44336;
+}
+.modals-default.nk-red .modal-content{
+	border: 1px solid #F44336;
+}
+.modals-default.nk-light-blue .modal-content, .modals-default.nk-light-blue .close, .modals-default.nk-light-blue .modal-footer .btn-default{
+	background:#03A9F4;
+}
+.modals-default.nk-light-blue .modal-content{
+	border: 1px solid #03A9F4;
+}
+.modals-default.nk-cyan .modal-content, .modals-default.nk-cyan .close, .modals-default.nk-cyan .modal-footer .btn-default{
+	background:#00BCD4;
+}
+.modals-default.nk-cyan .modal-content{
+	border: 1px solid #00BCD4;
+}
+.modals-default.nk-deep-purple .modal-content, .modals-default.nk-deep-purple .close, .modals-default.nk-deep-purple .modal-footer .btn-default{
+	background:#673AB7;
+}
+.modals-default.nk-deep-purple .modal-content{
+	border: 1px solid #673AB7;
+}
+.modals-default.nk-indigo .modal-content, .modals-default.nk-indigo .close, .modals-default.nk-indigo .modal-footer .btn-default{
+	background:#3F51B5;
+}
+.modals-default.nk-indigo .modal-content{
+	border: 1px solid #3F51B5;
+}
+.modals-default.nk-blue .modal-content, .modals-default.nk-blue .close, .modals-default.nk-blue .modal-footer .btn-default{
+	background:#2196F3;
+}
+.modals-default.nk-blue .modal-content{
+	border: 1px solid #2196F3;
+}
+.modals-default.nk-red .modal-body h2, .modals-default.nk-red .modal-body p, .modals-default.nk-light-blue .modal-body h2, .modals-default.nk-light-blue .modal-body p, .modals-default.nk-cyan .modal-body h2, .modals-default.nk-cyan .modal-body p, .modals-default.nk-deep-purple .modal-body h2, .modals-default.nk-deep-purple .modal-body p, .modals-default.nk-indigo .modal-body h2, .modals-default.nk-indigo .modal-body p, .modals-default.nk-blue .modal-body h2, .modals-default.nk-blue .modal-body p{
+	color:#fff;
+}
+.modals-hd p, .modal-df-hd p{
+	margin-bottom:0px;
+}
+.modals-hd{
+	margin-bottom:20px;
+}
+/*----------------------------------------*/

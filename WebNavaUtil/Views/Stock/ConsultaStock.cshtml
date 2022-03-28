@@ -1,0 +1,255 @@
+﻿@using WebNavaUtil.wsNavautil
+@model IEnumerable<WebNavaUtil.wsNavautil.Producto>
+
+@{
+    ViewBag.Title = "ConsultaStock";
+}
+
+
+@{
+    Usuario objUsuario = (Usuario)Session["NavaUsert"];
+    int i = 1;
+}
+
+<div class="row">
+    <div class="col-12">
+        <form class="card">
+            <div class="card-body">
+                <h3 class="card-title">Consultas de Stock</h3>
+                <div class="row" id="div-filtros-pedido" style="display:none">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Estado</label>
+                            <select name="" id="estado-produ" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                                <option value="3">Todos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Descripción</label>
+                            <input type="text" name="" class="form-control" placeholder="Descripción" id="desc-produ" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Código del Producto</label>
+                            <input type="text" name="" class="form-control" placeholder="código" id="cod-produ" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Almacén</label>
+                            @Html.DropDownList("cboAlmacen", (SelectList)ViewBag.ALMACEN, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Línea</label>
+                            @Html.DropDownList("cboFamilia", (SelectList)ViewBag.FAMILIA, "Seleccione....", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Sub Línea</label>
+                            <select name="" id="cboSubLinea" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Grupo/Tipo</label>
+                            <select name="" id="cboGrupo" class="form-control custom-select">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" style="text-align:right">
+                            <div class="btn-list">
+                                <button type="button" class="btn btn-outline-primary" id="mas-menos-filtros" data-active="mas">
+                                    <i class="fe fe-plus mr-2"></i>Más
+                                    filtros
+                                </button>
+                                <a class="btn btn-icon btn-primary btn-danger" id="btn-search-produ-stock" style="color:white">
+                                    <i class="fe fe-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">               
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h3 class="card-title">Listado de Stock</h3>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
+                    <button type="button" class="btn btn-icon btn-success" id="btn-editar-producto" style="color:white">
+                        <!--data-toggle="modal" data-target="#modal-editar-producto"-->
+                        <i class="fe fe-edit"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive" id="producto-cabecera-table">
+                <table class="table  card-table datatable-producto" width="100%">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Código</th>
+                            <th>Marca</th>
+                            <th>Descripción</th>
+                            <th>U.M.</th>
+                            <th>Stock Físico</th>
+                            <th>Stock Dispon.</th>
+                            <th>Pedido</th>
+                            @if (objUsuario.empresa.Equals("tecflex"))
+                            {
+                                <th>Stock Codbar</th>
+                            }
+                            else
+                            {
+                                <th>Stock Tecflex</th>
+                            }
+                            <th>Código Produ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.codProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.marcaProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.descProdu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UM)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockFisico)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockDispon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pedido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.stockOtr)
+                                </td>
+                                <td hidden>
+                                    @Html.DisplayFor(modelItem => item.idProdu)
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detalle de Movimientos <label id="lbl-detMovi-produ"></label></h3>
+                @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group" style="text-align:right">
+                        <br />
+                        <label class="custom-switch">
+                            <input type="checkbox" name="custom-switch-checkbox" id="chk-solo-ventas" class="custom-switch-input" data-cod-produ="">
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Solo Ventas</span>
+                        </label>
+                    </div>
+                </div>*@
+            </div>
+            <div class="table-responsive" id="movimiento-produ-table">
+                <table class="table card-table table-vcenter text-nowrap datatable-movi-produ" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Nro</th>
+                            <th>Fecha</th>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Salida</th>
+                            <th>Precio Und</th>
+                            <th>Referencia</th>
+                            <th>Tipo Mov</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-editar-producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar Nro. de Etiquetas por Rollo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-content-edit-produ">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Código</label>
+                            <input type="text" class="form-control" name="" id="txt-codProdu" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label class="form-label">Nro. de Etiquetas por Rollo</label>
+                            <input type="number" class="form-control" name="" id="txt-nroEtiquetas" placeholder="Cantidad">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h6>Descripción: </h6>
+                        <h6>Unid. Medida: </h6>
+                        <h6>Marca: </h6>
+                        <h6>Linea: </h6>
+                        <h6>Sub Linea: </h6>
+                        <h6>Grupo/Tipo: </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btn-registrar-produ-edit">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

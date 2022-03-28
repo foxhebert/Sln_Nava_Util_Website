@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Navautil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/login/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/login/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/login/css/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login-tecflex" id="id-color-fondo">
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+                <form class="login100-form validate-form" action="/Login/LoginNavautil" method="post">
+                    <span class="login100-form-title p-b-55">
+                        Login
+                    </span>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Usuario requerido">
+                        <select class="input100-select" name="empresa" id="cboEmpresa">
+                            <option value="tecflex">TECFLEX SAC</option>
+                            <option value="codbar">CODBAR SAC</option>
+                        </select>
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Usuario requerido">
+                        <input class="input100" type="text" name="nomAcceso" placeholder="Usuario">
+                        <span class="focus-input100 input-text-color"></span>
+                        <span class="symbol-input100">
+                            <span class="lnr lnr-envelope"></span>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Contraseña requerida">
+                        <input class="input100" type="password" name="clave" placeholder="Constraseña">
+                        <span class="focus-input100 input-text-color"></span>
+                        <span class="symbol-input100">
+                            <span class="lnr lnr-lock"></span>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn p-t-25">
+                        <button class="login100-form-btn" id="btn-login">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+                <br /><br />
+                <p>Versión 1.0.1.211105.SW</p> @*Versión Original 1.0.1.190822.SW*@
+
+                @if (TempData["ERROR_LOGIN"] != null)
+                {
+                    <br />
+                    <div class="alert alert-danger text-center" role="alert">
+                        @TempData["ERROR_LOGIN"]
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <!--<script src="~/Scripts/js/vendor/jquery-1.12.4.min.js"></script>-->
+    <script src="~/Content/assets/js/vendors/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/login/js/popper.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/login/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/login/js/main.js"></script>
+
+</body>
+</html>

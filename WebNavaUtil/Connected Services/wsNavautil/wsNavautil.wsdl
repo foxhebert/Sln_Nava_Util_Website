@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wsNavautil" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:10772/wsNavautil.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:10772/wsNavautil.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:10772/wsNavautil.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio.Entidades" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IwsNavautil_ListarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_listarDetallePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:listarDetallePedido" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_listarDetallePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listarDetallePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarVendedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarVendedor" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarVendedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarVendedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ValidarUsuarioNavaUtil_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioNavaUtil" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ValidarUsuarioNavaUtil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioNavaUtilResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarGuia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGuia" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarGuia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarDetalleGuia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDetalleGuia" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarDetalleGuia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDetalleGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarAlmacen_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAlmacen" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarAlmacen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarAlmacenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarFamilia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFamilia" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarFamilia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarSubFamilia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSubFamilia" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarSubFamilia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarSubFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarGrupo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarGrupo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarProdStockCAB_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdStockCAB" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarProdStockCAB_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdStockCABResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarMovProdu_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMovProdu" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarMovProdu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMovProduResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_DatosProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProducto" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_DatosProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_DatosProductoCotiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProductoCotiz" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_DatosProductoCotiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DatosProductoCotizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ImpresionTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImpresionTicket" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ImpresionTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImpresionTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ImprimirEtiqueta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImprimirEtiqueta" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ImprimirEtiqueta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImprimirEtiquetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_consultarCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:consultarCliente" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_consultarCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:consultarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ConsultarComprobante_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarComprobante" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ConsultarComprobante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultarComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_GrabarCotizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GrabarCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_GrabarCotizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GrabarCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_consultarClienteCotizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:consultarClienteCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_consultarClienteCotizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:consultarClienteCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarComboGeneral_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneral" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarComboGeneral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarComboGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarProdStockCotiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdStockCotiz" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarProdStockCotiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdStockCotizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_getCorrelativoCotizacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCorrelativoCotizacion" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_getCorrelativoCotizacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCorrelativoCotizacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarEmisor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmisor" />
+  </wsdl:message>
+  <wsdl:message name="IwsNavautil_ListarEmisor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarEmisorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IwsNavautil">
+    <wsdl:operation name="ListarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarPedido" message="tns:IwsNavautil_ListarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarPedidoResponse" message="tns:IwsNavautil_ListarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listarDetallePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/listarDetallePedido" message="tns:IwsNavautil_listarDetallePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/listarDetallePedidoResponse" message="tns:IwsNavautil_listarDetallePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarVendedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarVendedor" message="tns:IwsNavautil_ListarVendedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarVendedorResponse" message="tns:IwsNavautil_ListarVendedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioNavaUtil">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ValidarUsuarioNavaUtil" message="tns:IwsNavautil_ValidarUsuarioNavaUtil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ValidarUsuarioNavaUtilResponse" message="tns:IwsNavautil_ValidarUsuarioNavaUtil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGuia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarGuia" message="tns:IwsNavautil_ListarGuia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarGuiaResponse" message="tns:IwsNavautil_ListarGuia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDetalleGuia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarDetalleGuia" message="tns:IwsNavautil_ListarDetalleGuia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarDetalleGuiaResponse" message="tns:IwsNavautil_ListarDetalleGuia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarAlmacen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarAlmacen" message="tns:IwsNavautil_ListarAlmacen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarAlmacenResponse" message="tns:IwsNavautil_ListarAlmacen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarFamilia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarFamilia" message="tns:IwsNavautil_ListarFamilia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarFamiliaResponse" message="tns:IwsNavautil_ListarFamilia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarSubFamilia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarSubFamilia" message="tns:IwsNavautil_ListarSubFamilia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarSubFamiliaResponse" message="tns:IwsNavautil_ListarSubFamilia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarGrupo" message="tns:IwsNavautil_ListarGrupo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarGrupoResponse" message="tns:IwsNavautil_ListarGrupo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdStockCAB">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarProdStockCAB" message="tns:IwsNavautil_ListarProdStockCAB_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarProdStockCABResponse" message="tns:IwsNavautil_ListarProdStockCAB_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMovProdu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarMovProdu" message="tns:IwsNavautil_ListarMovProdu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarMovProduResponse" message="tns:IwsNavautil_ListarMovProdu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/DatosProducto" message="tns:IwsNavautil_DatosProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/DatosProductoResponse" message="tns:IwsNavautil_DatosProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosProductoCotiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/DatosProductoCotiz" message="tns:IwsNavautil_DatosProductoCotiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/DatosProductoCotizResponse" message="tns:IwsNavautil_DatosProductoCotiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ActualizarProducto" message="tns:IwsNavautil_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ActualizarProductoResponse" message="tns:IwsNavautil_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImpresionTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ImpresionTicket" message="tns:IwsNavautil_ImpresionTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ImpresionTicketResponse" message="tns:IwsNavautil_ImpresionTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImprimirEtiqueta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ImprimirEtiqueta" message="tns:IwsNavautil_ImprimirEtiqueta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ImprimirEtiquetaResponse" message="tns:IwsNavautil_ImprimirEtiqueta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="consultarCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/consultarCliente" message="tns:IwsNavautil_consultarCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/consultarClienteResponse" message="tns:IwsNavautil_consultarCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarComprobante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ConsultarComprobante" message="tns:IwsNavautil_ConsultarComprobante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ConsultarComprobanteResponse" message="tns:IwsNavautil_ConsultarComprobante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GrabarCotizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/GrabarCotizacion" message="tns:IwsNavautil_GrabarCotizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/GrabarCotizacionResponse" message="tns:IwsNavautil_GrabarCotizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="consultarClienteCotizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/consultarClienteCotizacion" message="tns:IwsNavautil_consultarClienteCotizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/consultarClienteCotizacionResponse" message="tns:IwsNavautil_consultarClienteCotizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarComboGeneral" message="tns:IwsNavautil_ListarComboGeneral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarComboGeneralResponse" message="tns:IwsNavautil_ListarComboGeneral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdStockCotiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarProdStockCotiz" message="tns:IwsNavautil_ListarProdStockCotiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarProdStockCotizResponse" message="tns:IwsNavautil_ListarProdStockCotiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCorrelativoCotizacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/getCorrelativoCotizacion" message="tns:IwsNavautil_getCorrelativoCotizacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/getCorrelativoCotizacionResponse" message="tns:IwsNavautil_getCorrelativoCotizacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmisor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IwsNavautil/ListarEmisor" message="tns:IwsNavautil_ListarEmisor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IwsNavautil/ListarEmisorResponse" message="tns:IwsNavautil_ListarEmisor_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IwsNavautil" type="tns:IwsNavautil">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarPedido">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listarDetallePedido">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/listarDetallePedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarVendedor">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarVendedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioNavaUtil">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ValidarUsuarioNavaUtil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGuia">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDetalleGuia">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarDetalleGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarAlmacen">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarAlmacen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarFamilia">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarSubFamilia">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarSubFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarGrupo">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdStockCAB">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarProdStockCAB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMovProdu">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarMovProdu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosProducto">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/DatosProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosProductoCotiz">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/DatosProductoCotiz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImpresionTicket">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ImpresionTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImprimirEtiqueta">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ImprimirEtiqueta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarCliente">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/consultarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarComprobante">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ConsultarComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GrabarCotizacion">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/GrabarCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarClienteCotizacion">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/consultarClienteCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarComboGeneral">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarComboGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdStockCotiz">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarProdStockCotiz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCorrelativoCotizacion">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/getCorrelativoCotizacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarEmisor">
+      <soap:operation soapAction="http://tempuri.org/IwsNavautil/ListarEmisor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsNavautil">
+    <wsdl:port name="BasicHttpBinding_IwsNavautil" binding="tns:BasicHttpBinding_IwsNavautil">
+      <soap:address location="http://localhost:10772/wsNavautil.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

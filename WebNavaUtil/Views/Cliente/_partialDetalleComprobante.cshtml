@@ -1,0 +1,69 @@
+﻿
+@using WebNavaUtil.wsNavautil
+@model IEnumerable<WebNavaUtil.wsNavautil.Comprobante>
+
+@{
+    ViewBag.Title = "ConsultarCliente";
+}
+
+@{
+    Usuario objUsuario = (Usuario)Session["NavaUsert"];
+}
+
+<table class="table card-table table-hover table-vcenter text-nowrap datatable-comprob-cliente">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Marca</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>UM</th>
+            <th>Precio</th>
+            <th>Total (SIN IGV)</th>
+            <th>Stock Físico</th>
+            @if (objUsuario.empresa.Equals("tecflex"))
+            {
+                <th>Stock Codbar</th>
+            }
+            else
+            {
+                <th>Stock Tecflex</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.um)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stockFisico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stockRelativo)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
